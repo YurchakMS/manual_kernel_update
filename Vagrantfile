@@ -1,9 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 # Describe VMs
 MACHINES = {
   # VM name "kernel update"
-  :"kernel-update" => {
+  :"MY-kernel" => {
               # VM box
-              :box_name => "centos/7",
+              :box_name => "MaxYurchak/centos-7-5",
               # VM CPU count
               :cpus => 2,
               # VM RAM size (Mb)
@@ -17,13 +19,11 @@ MACHINES = {
 
 Vagrant.configure("2") do |config|
   MACHINES.each do |boxname, boxconfig|
-    # Disable shared folders
-    config.vm.synced_folder ".", "/vagrant", disabled: true
-    # Apply VM config
-    config.vm.define boxname do |box|
+  config.vm.define boxname do |box|
       # Set VM base box and hostname
       box.vm.box = boxconfig[:box_name]
       box.vm.host_name = boxname.to_s
+      config.vm.box_version = "1.0"
       # Additional network config if present
       if boxconfig.key?(:net)
         boxconfig[:net].each do |ipconf|
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
         # Set VM RAM size and CPU count
         v.memory = boxconfig[:memory]
         v.cpus = boxconfig[:cpus]
-      end
+        end
     end
   end
 end
