@@ -26,7 +26,7 @@ https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 Устанавливаем необходимые пакеты для сборки ядра из исходников.
 `sudo yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel bc gcc`
 
->[!Note]
+> [!Note]
 >       - Для скачивания исходников ядра используется утилита `wget` в минимальной конфигурации её нет, поэтому, установка утилиты вынесена в `http/vagrant.ks`
 >       - Для того, чтобы ядро собиралось быстрее увеличиваем память до 2048 mb  и количества vcpu до 4
 
