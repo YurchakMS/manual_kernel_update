@@ -18,22 +18,29 @@ Kernel update. Create custom box for Vagrant Clound. Packer.
 ---
 ### Часть №2 Part#2
 
-Сборка ядра из исходных файлов
+Сборка ядра из исходных файлов.
+
 Скачиваем исходники ядра с сайта kernel.org
 ```
 https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 ```
 Устанавливаем необходимые пакеты для сборки ядра из исходников.
-`sudo yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel bc gcc`
 
-> [!Note]
->       - Для скачивания исходников ядра используется утилита `wget` в минимальной конфигурации её нет, поэтому, установка утилиты вынесена в `http/vagrant.ks`
->       - Для того, чтобы ядро собиралось быстрее увеличиваем память до 2048 mb  и количества vcpu до 4
+`sudo yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel bc gcc wget perl`
+
+
+> Для того, чтобы ядро собиралось быстрее увеличиваем память до 2048 mb  и количества vcpu до 4
 
 ---
 #### Сдача задания
+#####   Вариант №1
 
 - Создаём с помощью Packer автоматизированный образ с использованием скриптов
 - Публикуем полученный box в Vagrant Cloud
 - Модифицируем файл Vagrant для скачивания готового обрзаза из Vagrant Cloud
+<details>
+<summary>Вариант №2</summary>
+
+В Vagrantfile добавлена секция provision. Обновление ядра происходит во время создания виртуальной машины. Результат - Новое ядрро из исходников после перезагрузки
+</details>
 
