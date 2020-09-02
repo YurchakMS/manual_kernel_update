@@ -1,7 +1,10 @@
-    <rule name="Redirect to HTTPS" stopProcessing="true">
-                        <match url="(.*)" />
-                        <conditions>
-                            <add input="{HTTPS}" pattern="^OFF$" />
-                        </conditions>
-                        <action type="Redirect" url="https://{HTTP_HOST}{UNENCODED_URL}" />
-</rule>
+                <rule name="Redirect to HTTPS" stopProcessing="true">
+                    <match url="(.*)" />
+                    <conditions>
+                        <add input="{HTTPS}" pattern="^OFF$" />
+                    </conditions>
+                    <action type="Redirect" url="https://{HTTP_HOST}{UNENCODED_URL}" appendQueryString="false" />
+                </rule>
+            </rules>
+        </rewrite>
+  </system.webServer>
